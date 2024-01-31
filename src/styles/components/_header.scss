@@ -1,0 +1,43 @@
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 80px;
+
+    // background-color: #eee;
+    // padding: 0 20px;
+    .logo {
+      width: 200px;
+      height: 80px;
+      cursor: pointer;
+    }
+
+    nav {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      // background-color: yellow;
+      gap: 40px;
+
+      & > div {
+        text-align: center;
+        cursor: pointer;
+        font-size: 16px;
+
+        .line {
+          width: 2px;
+          height: 1px;
+          background-color: #da8e6e;
+          margin-top: 0.8rem;
+          opacity: 0;
+          transition: 0.4s;
+        }
+
+        &:hover {
+          .line {
+            opacity: 1;
+            width: 100%;
+          }
+        }
+      }
+    }
+  }

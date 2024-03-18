@@ -1,9 +1,16 @@
-import { useLayoutEffect } from "react";
+import { useLayoutEffect, useEffect } from "react";
 import HeroVideo from "../assets/IMG_0987.MP4";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import LocomotiveScroll from "locomotive-scroll";
+import { getPoem } from "../apis";
+import { useNavigate, useParams } from "react-router-dom";
+import { useState } from "react";
 
 export default function Poetry() {
+  const pathname = useParams();
+  const [poem, setPoem] = useState("");
+
   useLayoutEffect(() => {
     const videos = document.querySelectorAll("video");
     videos.forEach((video) => {
@@ -11,7 +18,6 @@ export default function Poetry() {
       if (playPromise !== undefined) {
         playPromise
           .then((_) => {
-            // console.log('video played!');
           })
           .catch((error) => {
             console.log("error", error);
@@ -20,13 +26,21 @@ export default function Poetry() {
     });
   }, []);
 
+  const handleGetPoem = async () => {
+    const response = await getPoem(pathname?.id);
+    setPoem(response?.data?.poem);
+  };
+
+  useEffect(() => {
+    handleGetPoem();
+  }, []);
   return (
-    <>
+    <div data-scroll-section>
       <div className="poems">
         <Header />
         <main>
           <div className="poems-card">
-            <div className="poems-card__title">A boy in the whirlwind</div>
+            <div className="poems-card__title">{poem?.title}</div>
             <video
               className="poems-card__visual"
               id="video"
@@ -34,29 +48,10 @@ export default function Poetry() {
               loop
               muted
               playsinline
-              src={HeroVideo}
+              src={poem?.videoUrl?.url}
             ></video>
             <div className="poems-card__content">
-              <p>
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry
-              </p>
-              <p>
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry
-              </p>
-              <p>
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry
-              </p>
-              <p>
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry
-              </p>
-              <p>
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry
-              </p>
+              <p dangerouslySetInnerHTML={{ __html: poem?.poem }}></p>
               {/* <p>Lorem Ipsum is simply dummy text of the printing and
                   typesetting industry</p>
           <p>Lorem Ipsum is simply dummy text of the printing and
@@ -69,6 +64,6 @@ export default function Poetry() {
         </main>
       </div>
       <Footer />
-    </>
+    </div>
   );
 }

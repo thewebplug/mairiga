@@ -5,7 +5,14 @@
   margin: auto;
   overflow-x: hidden;
   position: relative;
-  // background-color: #ddcccc;
+  // overflow-y: auto;
+
+  // height: 100vh;
+  // perspective: 10px;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 
   &__svg {
     position: absolute;
@@ -14,6 +21,9 @@
     z-index: -1;
     width: 1900px;
     height: 1900px;
+    stroke: #000;
+    stroke-width: 5;
+    fill: none;
 
     // opacity: 0.7;
     // background-color: yellow;
@@ -22,11 +32,15 @@
   .hero {
     padding-top: 100px;
     // background-color: #eee;
+    // transform-style: preserve-3d;
+    // z-index: -1 !important;
 
     &__title {
       position: relative;
       width: fit-content;
       margin: auto;
+      // transform: translateZ(-1px) scale(1.1);
+      // z-index: -1 !important;
 
       .span {
         position: relative;
@@ -43,8 +57,13 @@
         border-radius: 24px;
         border: 2px solid #000;
         font-size: 1.6rem;
-        cursor: pointer;
+        // cursor: pointer;
         transition: 0.4s;
+
+        @media (max-width: $phone) {
+          padding: 4px 10px;
+          font-size: 1rem;
+        }
 
         &:hover {
           transform: rotate(0deg) translateY(-20px);
@@ -56,6 +75,10 @@
         top: -45px;
         left: 0px;
         transform: rotate(-24deg);
+
+        @media (max-width: $phone) {
+          top: -27px;
+        }
       }
 
       .pill__2 {
@@ -63,13 +86,24 @@
         top: -45px;
         left: 71px;
         transform: rotate(13deg);
+
+        @media (max-width: $phone) {
+          top: -25px;
+          left: 36px;
+          transform: rotate(16deg);
+        }
       }
 
       .pill__3 {
         background-color: #dce9f7;
         top: -22.8px;
         left: 2px;
-        transform: rotate(13.7deg);
+        transform: rotate(11.7deg);
+
+        @media (max-width: $phone) {
+          top: -18px;
+          left: -10px;
+        }
       }
 
       .pill__4 {
@@ -77,6 +111,11 @@
         top: -29px;
         left: 47px;
         transform: rotate(26deg);
+
+        @media (max-width: $phone) {
+          top: -22px;
+          left: 2px;
+        }
       }
 
       .pill__5 {
@@ -84,6 +123,11 @@
         top: -29px;
         left: 0;
         transform: rotate(9.5deg);
+
+        @media (max-width: $phone) {
+          top: -20px;
+          left: -8px;
+        }
       }
 
       h1 {
@@ -91,12 +135,24 @@
         // background-color: yellow;
         text-align: center;
         margin-bottom: 10px;
+        white-space: nowrap;
+        word-break: keep-all;
+        word-wrap: nowrap;
+
+        @media (max-width: $phone) {
+          font-size: 5.8rem;
+        }
 
         img {
           width: 20rem;
           height: 8rem;
           object-fit: cover;
           border-radius: 36px;
+
+          @media (max-width: $phone) {
+            width: 10rem;
+            height: 4rem;
+          }
         }
 
         .hero__title__around {
@@ -106,6 +162,7 @@
 
       .hero__title__button {
         @extend %large-button;
+        z-index: -1 !important;
       }
     }
   }
@@ -125,7 +182,7 @@
       position: relative;
       flex-direction: column-reverse;
     }
-    
+
     &__preview {
       position: relative;
       flex-basis: 40%;
@@ -159,13 +216,25 @@
         background: #0000004e;
         color: #ddcccc;
       }
+
+      @media (max-width: $phone) {
+        flex-basis: 100%;
+      }
       .podcast__main-title {
         @extend %title-6_4;
         font-size: 50px;
 
+        @media (max-width: $phone) {
+          font-size: 25px;
+        }
+
         span {
           font-size: 72px;
           font-family: "Silk Flower", arial;
+
+          @media (max-width: $phone) {
+            font-size: 54px;
+          }
         }
       }
       .podcast__main-socials {
@@ -182,7 +251,7 @@
           flex-direction: column;
           align-items: center;
           width: fit-content;
-          cursor: pointer;
+          // cursor: pointer;
 
           .line {
             width: 2px;
@@ -203,6 +272,11 @@
       }
       .podcast__main-subtitle {
         @extend %text-normal;
+        overflow: auto;
+
+        &::-webkit-scrollbar {
+          display: none;
+        }
       }
     }
   }
@@ -227,7 +301,7 @@
       // background-color: yellow;
 
       @media (max-width: $tablet) {
-        grid-template-columns:1fr;
+        grid-template-columns: 1fr;
         gap: 40px;
       }
 
@@ -258,7 +332,7 @@
           border-radius: 24px;
           border: 2px solid #000;
           font-size: 16px;
-          cursor: pointer;
+          // cursor: pointer;
           transition: 0.4s;
           width: fit-content;
           background-color: #ddcccc;
@@ -267,6 +341,7 @@
           width: 180px;
           align-items: center;
           justify-content: center;
+          color: #000;
 
           @media (max-width: $tablet) {
             margin-top: 2.4rem;
@@ -289,9 +364,27 @@
       & > :nth-child(even) {
         margin-right: 20px;
         margin-left: 20px;
+        width: 100%;
       }
 
       & > div {
+        flex-basis: 33%;
+        transition: 0.4s;
+
+        &:hover {
+          flex-basis: 100%;
+        }
+
+        img {
+          // cursor: pointer;
+          transition: 0.4s;
+
+          // &:hover {
+          //   opacity: 0.5;
+          //   height: 100% !important;
+          // }
+        }
+
         width: 100%;
         .charity__grid-small {
           width: 100%;
@@ -328,42 +421,70 @@
       }
     }
   }
-
-  
 }
 
 .speaking {
   width: 100%;
   margin-top: 84px;
   margin-bottom: 768px;
+  // background: yellow;
 
-  &__grid {
-    display: flex;
-    align-items: center;
-    overflow-x: auto;
+  &__inner {
+    overflow: hidden;
+    scroll-behavior: smooth;
+    position: relative;
+    height: 500px;
 
-    &::-webkit-scrollbar {
-      display: none;
+    @media (max-width: $tablet) {
+    height: fit-content;  
     }
 
-    .speaking__grid-box {
-      min-width: 40rem;
-      // height: 600px;
-      margin-right: 20px;
-      // background: yellow;
-      font-size: 2.4rem;
-      text-align: center;
+    &__grid {
+      display: flex;
+      align-items: center;
+      overflow-x: auto;
+      position: absolute;
+      top: 0;
+      left: 0;
+      pointer-events: none;
 
-      img {
-        width: 100%;
-        height: 45rem;
-        object-fit: cover;
-        margin-bottom: 2.4rem;
+      @media (max-width: $tablet) {
+        position: relative;
+        top: unset;
+        left: unset;
+        pointer-events: unset;
       }
 
-      h3 {
-        @extend %title-12;
+      &::-webkit-scrollbar {
+        display: none;
+      }
+
+      .speaking__inner__grid-box {
+        width: 40rem;
+        // height: 600px;
+        margin-right: 20px;
+        // background: yellow;
         font-size: 2.4rem;
+        text-align: center;
+
+        @media (max-width: $tablet) {
+          width: unset;
+          min-width: 40rem;
+        }
+
+        img {
+          width: 100%;
+          height: 45rem;
+          object-fit: cover;
+          margin-bottom: 2.4rem;
+          border: 2px solid #000;
+          // background: yellow;
+        }
+
+        h3 {
+          @extend %title-12;
+          font-size: 2.4rem;
+        }
       }
     }
   }
@@ -375,8 +496,122 @@
     letter-spacing: 1vw;
     margin-top: 40px;
     // text-transform: uppercase;
+    transition: 0.3s;
+      // cursor: pointer;
+      z-index: 1;
+
+    
+    &::before {
+      content: "Speaking Engagements";
+      display: block;
+      position: absolute;
+      color: #ddcccc;
+      clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);
+      transition: 275ms;
+      right: 50%;
+      transform: translateX(50%);
+      white-space: nowrap;
+
+    }
+
+    &:hover {
+      &::before {
+        clip-path: polygon(0 100%, 100% 100%, 100% 0, 0 0);
+      }        
+    }
   }
 }
+
+
+.marquee {
+  text-transform: uppercase;
+  // overflow: hidden;
+
+  &__wrap {
+    &:hover {
+      .marquee__inner {
+        animation-play-state: paused;
+
+        &:hover {
+          .slide-up {
+            transform: translateY(0);
+
+            &::before {
+              transform: translateY(0);
+              clip-path: polygon(0 100%, 100% 100%, 100% 0, 0 0);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &__inner {
+    height: 100%;
+    width: fit-content;
+    align-items: center;
+    display: flex;
+    position: relative;
+    // animation: marquee 25s linear infinite;
+    will-change: transform;
+    padding-top: 2.4rem;
+    padding-bottom: 1rem;
+
+    // @include media(">phone") {
+    //   padding-top: 5.8rem;
+    //   padding-bottom: 2.3rem;
+    // }
+
+    span {
+      white-space: nowrap;
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+
+    .inner-span {
+      text-transform: uppercase;
+      // @extend %title-160;
+      font-size: 9rem;
+      color: #777777;
+      position: relative;
+      // overflow: hidden;
+
+      .slide-up {
+        position: absolute;
+        top: 0;
+        left: 0;
+        overflow: hidden;
+        transform: translateY(0);
+        transition: transform 275ms ease;
+        display: block;
+        // background: yellow;
+
+        // @media (any-pointer: fine) {
+        //   display: inline-block;
+        // }
+
+        &::before {
+          display: block;
+          content: attr(data-content);
+          white-space: nowrap;
+          color: #cb450c;
+          transform: translateY(0);
+          transition: 275ms ease;
+          clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);
+
+        }
+      }
+    }
+  }
+
+  // @keyframes marquee {
+  //   100% {
+  //     transform: translate3d(-50%, 0, 0);
+  //   }
+  // }
+}
+
+
 .testimonials {
   width: 100%;
 
@@ -387,6 +622,26 @@
     text-align: center;
     font-family: "Silk Flower", arial;
     // margin-bottom: -40px;
+
+    &::before {
+      content: "Testimonials";
+      display: block;
+      position: absolute;
+      color: #ddcccc;
+      clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);
+      transition: 275ms;
+      right: 50%;
+      transform: translateX(50%);
+      white-space: nowrap;
+
+    }
+
+    &:hover {
+      // color: transparent;
+      &::before {
+        clip-path: polygon(0 100%, 100% 100%, 100% 0, 0 0);
+      }        
+    }
   }
 
   .testimonials__body {
@@ -396,6 +651,10 @@
     border-radius: 14vw 14vw 0 0;
     // border: 2px solid #000;
     padding-top: 140px;
+
+    @media (max-width: $phone) {
+      height: 100vh;
+    }
 
     &__title {
       @extend %title-6_4;
@@ -439,84 +698,120 @@
       // width: 100%;
       padding: 40px 0;
       margin: 160px auto 0 auto;
-      display: flex;
-      align-items: center;
-      overflow: auto;
+      overflow: hidden;
       scroll-behavior: smooth;
       transition: 0.3s;
+      position: relative;
+      height: 600px;
+      // background: yellow;
 
-      &::-webkit-scrollbar {
-        display: none;
+      @media (max-width: $phone) {
+        padding: 0;
+      margin: 0 auto 0 auto;
+      height: 400px;
+
       }
 
-      .testimonial-card {
-        min-width: 500px;
-        padding: 8px 8px 12px 8px;
-        border-radius: 16px;
-        background: #fff;
-        margin-right: 2rem;
+      .testimonials__body__inner-slider {
+        display: flex;
+        align-items: center;
+        // overflow: auto;
+        // position: absolute;
+        // top: 0;
+        // left: 0;
+        height: 100%;
+        animation: marquee 2s linear infinite;
 
-        @media (max-width: $tablet) {
-          min-width: 400px;
-        }
+        //The idea for this animation is to find a point during the animation that looks like the beginning of the animation and restart the animation at that point. This gives the feel that the animation is endless. Kind of like when the end ov a video is exaclty the same as the beginnig. you would not know when you've started watching the video all over again
 
-        &__img {
-          width: 100%;
-          height: 300px;
-          position: relative;
-          cursor: pointer;
+        // width: 200%;
+        // pointer-events: none;
 
-          @media (max-width: $tablet) {
-            height: 250px;
-          }
-
-          img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 8px;
-          }
-
-          .testimonial-card__img-text {
-            @extend %text-normal;
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: #000;
-            color: #fff;
-            top: 0;
-            left: 0;
-            border-radius: 8px;
-            padding: 8px;
-            font-size: 3.2rem;
-            transition: 0.3s;
-            clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);
-          }
-        }
-
-        &__flex {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          font-size: 12px;
-          margin-top: 0.8rem;
-
-          & > :first-child {
-            font-weight: 700;
-            font-size: 14px;
-          }
+        &::-webkit-scrollbar {
+          display: none;
         }
 
         &:hover {
-          // transition: 0.3s;
-          transition: 0.3s;
-          cursor: pointer;
+          animation-play-state: paused;
+        }
 
-          transform: rotate(-5deg);
-          .testimonial-card__img {
-            .testimonial-card__img-text {
-              clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+        .testimonial-card {
+          min-width: 500px;
+          padding: 8px 8px 12px 8px;
+          border-radius: 16px;
+          background: #fff;
+          margin-right: 20px;
+          transition: transform 0.7s;
+          // transform: skewX(20deg);
+
+          @media (max-width: $tablet) {
+            min-width: 400px;
+          }
+
+          &__img {
+            width: 100%;
+            height: 300px;
+            position: relative;
+            // cursor: pointer;
+
+            @media (max-width: $tablet) {
+              height: 250px;
             }
+
+            img {
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+              border-radius: 8px;
+            }
+
+            .testimonial-card__img-text {
+              @extend %text-normal;
+              position: absolute;
+              width: 100%;
+              height: 100%;
+              background: #000;
+              color: #fff;
+              top: 0;
+              left: 0;
+              border-radius: 8px;
+              padding: 8px;
+              font-size: 3.2rem;
+              transition: 0.3s;
+              clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);
+            }
+          }
+
+          &__flex {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 12px;
+            margin-top: 0.8rem;
+
+            & > :first-child {
+              font-weight: 700;
+              font-size: 14px;
+            }
+          }
+
+          &:hover {
+            // transition: 0.3s;
+            transition: 0.3s;
+            // cursor: pointer;
+
+            transform: rotate(-5deg);
+            .testimonial-card__img {
+              .testimonial-card__img-text {
+                clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+              }
+            }
+          }
+        }
+
+        @keyframes marquee {
+          100% {
+            transform: translate(-520px, 0);
           }
         }
       }
@@ -536,7 +831,6 @@
   border-radius: 16px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   padding: 8px;
   border: 2px solid #000;
 
@@ -544,42 +838,46 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 4rem;
-    flex-basis: 16%;
+    padding: 1rem 4rem 0;
     // background: green;
+    margin-bottom: 2rem;
     font-family: "Silk Flower", arial;
+
+    @media (max-width: $phone) {
+      padding: 1rem 2rem 0;
+    }
+
     &__title {
       font-size: 72px;
 
       @media (max-width: $phone) {
-        font-size: 7.2rem;
+        font-size: 36px;
       }
     }
     &__subtitle {
       font-size: 24px;
 
       @media (max-width: $phone) {
-        font-size: 2.4rem;
+        font-size: 16px;
       }
     }
   }
 
   &__bio {
     width: 100%;
-    flex-basis: 84%;
     object-fit: cover;
     border-radius: 8px;
     border: 2px solid #000;
-    // background-color: yellow;
-    background: url("../../assets/IMG_0976.JPG");
+    height: 100%;
+    background: url("../../assets/DSC08886.jpg");
     background-size: cover;
     background-position: center;
     display: flex;
     align-items: end;
+    position: relative;
 
     .about__bio-text {
       background-color: #00000075;
-      // height: fit-content;
       max-height: 38%;
       border-radius: 0 0 5px 5px;
       overflow-y: auto;
@@ -587,7 +885,8 @@
       padding: 10px 20px;
       color: #ddcccc;
       @extend %text-normal;
-      // font-size: 1.6rem;
+      position: absolute;
+
       &::-webkit-scrollbar {
         display: none;
       }
@@ -604,9 +903,9 @@
   flex-direction: column;
   justify-content: space-between;
 
+
   video {
     border-radius: 32px;
-    z-index: -1;
 
     // z-index: -1;
     position: absolute;
@@ -622,6 +921,20 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    position: relative;
+    width: 100%;
+
+    &__tint {
+      position: absolute;
+      @media (max-width: $phone) {
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 620px;
+        background: #0000005b;
+        border-radius: 32px;
+      }
+    }
     &__title {
       @extend %title-12;
       font-size: 48px;
@@ -629,6 +942,7 @@
       margin-top: 2rem;
       margin-left: 2rem;
       color: #ddcccc;
+      z-index: 1;
     }
     &__subtitle {
       @extend %title-12;
@@ -638,10 +952,23 @@
       margin-right: 2rem;
       color: #ddcccc;
       transition: 0.3s;
-      cursor: pointer;
+      // cursor: pointer;
+      z-index: 1;
+      
+
+      &::before {
+        content: "See more";
+        display: block;
+        position: absolute;
+        color: #fff;
+        clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);
+        transition: 275ms;
+      }
 
       &:hover {
-        color: #fff;
+        &::before {
+          clip-path: polygon(0 100%, 100% 100%, 100% 0, 0 0);
+        }        
       }
     }
   }
@@ -656,6 +983,12 @@
     align-items: center;
     // background: yellow;
     overflow: hidden;
+    z-index: 1;
+
+    @media (max-width: $phone) {
+      gap: 20px;
+      padding: 24px;
+    }
 
     & > div {
       width: 100%;
@@ -663,7 +996,7 @@
       height: 240px;
       transform: rotate(-24deg);
       transition: 0.4s ease-in;
-      cursor: pointer;
+      // cursor: pointer;
       box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
       margin-top: 240px;
       opacity: 0.6;
@@ -672,7 +1005,9 @@
       @media (max-width: $tablet) {
         height: 180px;
         margin-top: 290px;
-
+      }
+      @media (max-width: $phone) {
+        height: 80px;
       }
 
       svg {
@@ -683,9 +1018,19 @@
         width: 80px;
         opacity: 0;
         transition: 0.5s ease-in;
+
+        @media (max-width: $phone) {
+          width: 40px;
+        }
       }
 
       img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 16px;
+      }
+      video {
         width: 100%;
         height: 100%;
         object-fit: cover;
@@ -697,11 +1042,25 @@
         margin-top: 0;
         opacity: 1;
 
+        @media (max-width: $phone) {
+          margin-top: 180px;
+        }
+
         svg {
           opacity: 1;
         }
       }
     }
+  }
+
+  .tint {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #00000085;
+    width: 100%;
+    height: 100%;
+    border-radius: 32px;
   }
 }
 .contact {
@@ -792,6 +1151,11 @@
     // display: none;
     // border: 2px solid #000;
 
+    @media (max-width: $phone) {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
     .bar-bottom-curve {
       width: 40px;
       height: 80px;
@@ -813,6 +1177,10 @@
       height: 100%;
       // font-size: 11rem;
 
+      @media (max-width: $phone) {
+        font-size: 6rem;
+      }
+
       .contact__box__tittle-arrow {
         width: 88%;
         height: 12%;
@@ -821,6 +1189,10 @@
         border-bottom-left-radius: 12px;
         position: relative;
         // background: yellow;
+
+        @media (max-width: $phone) {
+          display: none;
+        }
         .arrow-head {
           width: 60px;
           height: 60px;
@@ -849,7 +1221,7 @@
       justify-content: center;
       border: 2px solid #000;
       animation: rotateSphere 10s linear infinite;
-      cursor: pointer;
+      // cursor: pointer;
       // border: 2px solid #000;
       will-change: transform;
 
@@ -908,6 +1280,10 @@
             align-items: center;
             font-size: 1.04rem;
             color: #ddcccc;
+
+            @media (max-width: $phone) {
+              font-size: 0.89rem;
+            }
 
             & > :last-child {
               width: 15px;
@@ -983,6 +1359,10 @@
         margin-bottom: 2rem;
         line-height: 1.1;
         text-align: center;
+
+        @media (max-width: $phone) {
+          font-size: 8rem;
+        }
       }
 
       &__input {

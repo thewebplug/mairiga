@@ -1,0 +1,164 @@
+.reg {
+    h1 {
+      @extend %title-3;
+    }
+    
+    
+    .form {
+      .user_input-short-container {
+        background-color: #f0f0f0;
+        display: flex;
+        align-items: center;
+        height: 36px;
+        border-radius: 7px;
+        padding-left: 10px;
+        width: 131px;
+        margin: 10px 0;
+      }
+    
+      .reg_student-box {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 80%;
+        height: 80%;
+        background-color: #f0f0f0;
+        padding: 20px;
+        overflow: "auto";
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    
+      .reg_student-box img {
+        max-width: 100%;
+        max-height: 80%;
+      }
+    
+      .reg_student-container {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+      }
+    
+      
+    
+      .studentForm__flex {
+        display: flex;
+        align-items: start;
+        justify-content: space-between;
+        margin-top: 20px;
+        width: 100%;
+    
+        .searchStudent {
+          // width: 48%;
+          display: grid;
+          grid-template-columns: 5fr 1fr;
+          gap: 20px;
+          align-items: center;
+          // background-color: yellow;
+            label {
+              @extend %normal-label;
+            }
+        
+            input, textarea {
+              @extend %normal-input;
+            }
+        
+            button {
+              @extend %smButton--filled;
+              margin-bottom: 0 !important;
+            }
+        
+        }
+    
+        & > div {
+          width: 48%;
+        }
+    
+        label {
+          @extend %normal-label;
+        }
+    
+        input, textarea {
+          @extend %normal-input;
+        }
+    
+        textarea {
+          @extend %normal-textarea;
+        }
+    
+        .studentForm__flex-select {
+          @extend %normal-input;
+          font-size: 1.6rem;
+        }
+      }
+
+      .quil {
+        margin-top: 20px;
+      }
+    
+      .studentForm__add-subject {
+        @extend %midButton--filled;
+        margin-top: 2.4rem;
+        margin-bottom: 4.8rem;
+      }
+    
+      .dropAreaContainer {
+        width: 100%;
+    
+        #drop-area {
+          border: 1px dashed #374957;
+          /* border-radius: 20px; */
+          width: 100%;
+          font-family: sans-serif;
+          /* margin: 100px auto; */
+          padding: 10px;
+          height: 215px;
+          background-color: #f0f0f0;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          cursor: pointer;
+    
+          .reg_student-area {
+            width: 100% !important;
+            background-color: #babfc5;
+            height: 189px;
+            /* height: 100%; */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #374957b2;
+          }
+        }
+      }
+    
+      .uploadedImages {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+        // margin-top: 20px;
+        min-height: 9.3rem;
+        
+    
+        &__image {
+          width: 9.3rem;
+          height: 9.3rem;
+          border-radius: 50%;
+          margin-left: 20px;
+          object-fit: cover;
+        }
+      }
+    
+      .reg-student-upload-label {
+        margin-top: 4rem;
+        // margin-bottom: 1rem;
+        font-size: 1.4rem;
+      }
+    }
+    
+  }

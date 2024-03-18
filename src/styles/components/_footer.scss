@@ -1,6 +1,6 @@
 .footer {
     width: 100%;
-    height: 120vh;
+    min-height: 120vh;
     background: #bbb;
     position: relative;
     display: flex;
@@ -8,6 +8,10 @@
     margin-top: 400px;
 
     // overflow-y: hidden;
+
+    // @media (max-width: $phone) {
+    //   display: none;
+    // }
   
     &__tab {
       max-width: 1152px;
@@ -22,27 +26,48 @@
       transform: translateX(50%);
       display: grid;
       grid-template-columns: 1fr 158px;
-      gap: 180px;
+      // gap: 180px;n
       align-items: center;
-      z-index: 1;
+      // z-index: 1;
+
+      @media (max-width: $tablet) {
+        grid-template-columns: 1fr;
+      }
+      @media (max-width: $phone) {
+        height: 20rem;
+        padding: 20px 40px;
+      }
   
       & > :first-child {
         @extend %title-6_4;
         font-size: 4.8rem;
         // background: yellow;
+
+        @media (max-width: $tablet) {
+          margin-bottom: 2rem;
+        }
+        @media (max-width: $phone) {
+          font-size: 3.2rem;
+        }
       }
       & > :last-child {
-        width: 158px;
-        margin: 0 auto;
+        width: fit-content;
+        // margin: 0 auto;
         background: #000;
         border: none;
         border-radius: 36px;
         padding: 8px 8px 8px 8px;
         display: flex;
         align-items: center;
-        font-size: 16px;
+        justify-content: space-between;
+        font-size: 1.6rem;
         color: #ddcccc;
         white-space: nowrap;
+
+        @media (max-width: $phone) {
+          // width: ;
+          font-size: 1.4rem;
+        }
   
         & > :last-child {
           width: 24px;
@@ -130,6 +155,9 @@
       @media (max-width: $tablet) {
         flex-direction: column;
       }
+      @media (max-width: $phone) {
+        height: auto;
+      }
       img {
         height: 100%;
         width: 40rem;
@@ -141,7 +169,8 @@
       }
   
       .footer__grid-section {
-        width: 590px;
+        max-width: 590px;
+        width: 100%;
         height: 100%;
         // background: yellow;
   
@@ -152,6 +181,7 @@
   
           .svg-container {
             width: 40px;
+            height: 40px;
             background: #ddcccc9f;
             padding: 10px;
             border-radius: 50%;
@@ -160,7 +190,12 @@
             justify-content: center;
             margin-right: 0.8rem;
             border: 1px solid #000;
-            cursor: pointer;
+            // cursor: pointer;
+
+            svg {
+              width: 24px !important;
+              height: 24px !important;
+            }
           }
   
           & > :last-child {
@@ -171,13 +206,18 @@
         .section__flex {
           display: grid;
           grid-template-columns: repeat(auto-fit, minmax(7ch, 1fr));
-          gap: 40px;
+          grid-row-gap: 40px;
           align-items: center;
           font-size: 6rem;
           font-weight: 700;
+
+          @media (max-width: $phone) {
+            margin-bottom: 6rem;
+          }
+          
   
           & > h2 {
-            cursor: pointer;
+            // cursor: pointer;
           }
         }
       }
@@ -191,7 +231,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      font-size: 16px;
+      font-size: 1.6rem;
       font-weight: 700;
       bottom: 20px;
       left: 50%;
@@ -200,6 +240,8 @@
       position: absolute;
       // background: yellow;
     }
+
+  
   
     &__faded {
       // background: rgba(0, 0, 255, 0.112);
@@ -210,8 +252,16 @@
       color: #ddcccc;
       bottom: 0;
       opacity: 0.4;
-      cursor: pointer;
+      // cursor: pointer;
       transition: 0.7s;
+
+      ::before {
+        content: 'Aisha';
+        position: absolute;
+        color: #00000058;
+        clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);
+        transition: 250ms;
+      }
       & > div {
         @extend %title-12;
         font-size: 36vw;
@@ -224,7 +274,10 @@
       }
   
       &:hover {
-        color: #00000058;
+        ::before {
+          clip-path: polygon(0 100%, 100% 100%, 100% 0, 0 0)
+
+        }
       }
     }
   }

@@ -140,9 +140,11 @@ table {
 a {
   color: inherit;
   text-decoration: none;
-  cursor: pointer;
+  // cursor: pointer;
+  cursor: none;
 }
 
 button {
-  cursor: pointer;
+  // cursor: pointer;
+  cursor: none;
 }

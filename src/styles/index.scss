@@ -1,3 +1,4 @@
+@import "~locomotive-scroll/dist/locomotive-scroll.css";
 @import 'base/reset';
 
 @import 'utils/variables';
@@ -16,3 +17,8 @@
 
 @import 'pages/home';
 @import 'pages/poetry';
+@import 'pages/poetry-stories';
+@import 'pages/admin/media';
+@import 'pages/admin/upload-media';
+@import 'pages/admin/bio';
+@import 'pages/admin/login';

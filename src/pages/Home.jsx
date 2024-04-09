@@ -128,6 +128,7 @@ export default function Home({scroll}) {
 
   const handleGetCharityMedia = async () => {
     const response = await getAllMedia("charity");
+    console.log('responselil', response);
     setCharityMedia(response?.data?.media);
   };
 
@@ -311,14 +312,14 @@ export default function Home({scroll}) {
               {/* each image here will scale up and then down to it's original size. Giving it a bounce effect */}
               <img src={Image1} className="charity__grid-small mini" />
               <img
-                src={charityMedia[2]?.mediaUrl?.url}
+                src={charityMedia?.length > 0 && charityMedia[2]?.mediaUrl?.url}
                 className="charity__grid-small maxXL"
               />
               <img src={Image1} className="charity__grid-small max" />
             </div>
             <div>
               <img
-                src={charityMedia[1]?.mediaUrl?.url}
+                src={charityMedia?.length > 0 && charityMedia[1]?.mediaUrl?.url}
                 className="charity__grid-big maxXL"
               />
               <img src={Image1} className="charity__grid-big mini" />
@@ -328,7 +329,7 @@ export default function Home({scroll}) {
               <img src={Image1} className="charity__grid-small max" />
               <img src={Image1} className="charity__grid-small mini" />
               <img
-                src={charityMedia[0]?.mediaUrl?.url}
+                src={charityMedia?.length > 0 && charityMedia[0]?.mediaUrl?.url}
                 className="charity__grid-small maxXL"
               />
             </div>
